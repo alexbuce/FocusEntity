@@ -197,10 +197,14 @@ open class FocusEntity: Entity, HasAnchoring, HasFocusEntity {
     self.focus = focus
     self.name = "FocusEntity"
     self.orientation = simd_quatf(angle: .pi / 2, axis: [1, 0, 0])
+    self.positioningEntity.synchronization = nil
+    self.addChild(self.positioningEntity)
 
     self.addChild(self.positioningEntity)
 
     cameraAnchor = AnchorEntity(.camera)
+    cameraAnchor.synchronization = nil
+    synchronization = nil
     arView.scene.addAnchor(cameraAnchor)
 
     // Start the focus square as a billboard.
